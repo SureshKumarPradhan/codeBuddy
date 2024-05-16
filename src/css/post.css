@@ -1,0 +1,8 @@
+.CardBody{
+    height: 100%;
+}
+.CardComponentBody{
+    height: 100%;
+     display: flex; 
+     flex-direction: column;
+}

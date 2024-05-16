@@ -4,7 +4,8 @@ import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepButton from "@mui/material/StepButton";
-
+import { useNavigate } from "react-router-dom";
+import "../css/home.css";
 import {
   Checkbox,
   FormControl,
@@ -29,6 +30,7 @@ import {
 const steps = ["Form One", "Form Two", "Form Three"];
 
 export default function Home() {
+  const navigate = useNavigate();
   const [activeStep, setActiveStep] = useState(0);
   const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
@@ -147,6 +149,7 @@ export default function Home() {
 
       if (jsonData.message == "Success") {
         handleReset();
+        navigate("/posts");
       }
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -216,17 +219,13 @@ export default function Home() {
   console.log(formData, "edwe");
 
   return (
-    <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
+    <Box className="main_body">
       <Box
         sx={{
-          minWidth: "70%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
           mt: 8,
-          boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
           p: 5,
         }}
+        className="Form_body"
       >
         <Stepper nonLinear activeStep={activeStep}>
           {steps.map((label, index) => (

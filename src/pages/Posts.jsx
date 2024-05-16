@@ -1,7 +1,31 @@
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Avatar, Card, CardContent, CardMedia, Grid, Stack, Typography } from "@mui/material";
+import "../css/post.css";
 
 const Posts = () => {
+  const [PostData, setPostDatas] = useState([]);
+  async function getPostData() {
+    try {
+      const response = await fetch("https://codebuddy.review/posts", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const jsonData = await response.json();
+      setPostDatas(jsonData.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+
+  useEffect(() => {
+    getPostData();
+  }, []);
+  console.log(PostData, "getData");
   return (
     <div className="rounded-lg bg-gray-50 p-7 text-gray-900 shadow-lg">
       <h1 className="mb-7 text-4xl font-bold">Posts</h1>
@@ -10,32 +34,32 @@ const Posts = () => {
         Back to Home
       </Link>
 
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <div className="rounded-lg bg-white p-7 shadow-lg">
-          <h2 className="text-2xl font-bold">Post 1</h2>
-          <p className="text-gray-700">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo voluptatem, quibusdam,
-            quos, voluptatum voluptas quod quas voluptates quia doloribus nobis voluptatibus. Quam,
-            voluptate voluptatum. Quod, voluptate? Quisquam, voluptate voluptatum.
-          </p>
-        </div>
-        <div className="rounded-lg bg-white p-7 shadow-lg">
-          <h2 className="text-2xl font-bold">Post 2</h2>
-          <p className="text-gray-700">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo voluptatem, quibusdam,
-            quos, voluptatum voluptas quod quas voluptates quia doloribus nobis voluptatibus. Quam,
-            voluptate voluptatum. Quod, voluptate? Quisquam, voluptate voluptatum.
-          </p>
-        </div>
-        <div className="rounded-lg bg-white p-7 shadow-lg">
-          <h2 className="text-2xl font-bold">Post 3</h2>
-          <p className="text-gray-700">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo voluptatem, quibusdam,
-            quos, voluptatum voluptas quod quas voluptates quia doloribus nobis voluptatibus. Quam,
-            voluptate voluptatum. Quod, voluptate? Quisquam, voluptate voluptatum.
-          </p>
-        </div>
-      </div>
+      <Grid container spacing={2}>
+        {PostData.map((post) => (
+          <Grid item key={post.id} xs={12} sm={6} md={4}>
+            <Card className="CardBody">
+              <CardMedia
+                component="img"
+                height="240"
+                image={post.image}
+                alt={`${post.firstName} ${post.lastName}`}
+              />
+              <CardContent className="CardComponentBody">
+                <Stack direction="row" spacing={2}>
+                  <Avatar alt={`${post.firstName} ${post.lastName}`} src={post.avatar} />
+                  <Typography variant="h5" component="div">
+                    {`${post.firstName} ${post.lastName}`}
+                  </Typography>
+                </Stack>
+
+                <Typography variant="body2" color="text.secondary">
+                  {post.writeup}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
     </div>
   );
 };
