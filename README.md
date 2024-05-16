@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# Welcome to Round 3 of your React Interview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> This round is to test your practical knowledge of using React in real world applications.
+> The repo serves as a boilerplate for the React application you are going to build.
+> The boilerplate is created using `vite`.
 
-## Available Scripts
+> **_Please read the below instructions carefully_**
 
-In the project directory, you can run:
+---
 
-### `npm start`
+### **Before starting keep in mind the below points**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- The repo is configured with **ESlint** to check the code quality of your javascript code.
+- Failing the rules set by the above linters will **prevent you from committing to this repo**
+- The Project will show some VS Code plugins as recommendations, that help you regarding these linter, ESLint, Prettier, etc. Install these plugins for better experience. You can open `.vscode/extensions.json` to see the list of recommended plugins.
+- This repo is pre-installed with Tailwind CSS. You can use it to style your components.
+- This repo is pre-installed with React Router v6.4. You can use it to create routes in your application.
+- You can install other npm packages if you want
+- Upon completing the problem, commit to your **FORKED** github repo and share the github repo url with us for review
+- Writing inline CSS is discouraged, utilize Tailwind or write your custom CSS in separate CSS files or CSS modules. You are free to use any other CSS or Component library like Bootstrap, Material UI, etc.
+- UI must be **responsive**
+- Can use any online resources to solve the problem
+- Must use [`fetch API`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) to make API calls instead of `axios`. Use `JSON.stringify` to convert the body to string when doing any POST request. Don't pass any headers like `Content-Type` or `Accept` in the request.
+- You have a total of **2 hrs** to complete the task
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Pre-requisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. You must have NodeJS (v18+) installed on your machine
+2. You must have a basic understanding of React, React Router, Tailwind CSS, etc.
+3. You must have a basic understanding of Git and GitHub
+4. You must have VS Code installed on your machine
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> **_Please read the below instructions carefully. Complete all the steps sequentially_**.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **_FORK_** this repo to your own GitHub account. **_DON'T CLONE THIS REPO_**. Fork button is the top right corner of the GitHub page.
+2. Clone the **FORKED** repo to your local machine.
+3. Open the project folder in VS Code
+4. Install the recommended plugins
+   - [EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+   - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+   - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+   - or open `.vscode/extensions.json` to see the list of recommended plugins and install them manually
+5. Install `node_modules` using `npm` or `yarn` or `pnpm`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```sh
+   npm install
+   ```
 
-### `npm run eject`
+   OR
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   ```sh
+   yarn install
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   OR
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```sh
+   pnpm install
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+6. Run `npm run dev` or `yarn dev` to run the project.
+7. Project will start at http://localhost:5173
 
-## Learn More
+> If you are on Windows and getting lot of ESLint errors due end of line characters CRLF please run the below command to fix it.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```sh
+npm run format
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+> **NOTE**: If you face issue installing with `npm` trying using `yarn v1.22.*`
 
-### Code Splitting
+> **NOTE**: You might be asked to do HTTP calls to https://codebuddy.review , the API mentioned in the Question Set will only work if you do a fetch request from the application as it served using MSW (Mock Service Worker) https://mswjs.io/. **So it won't work if you try to do a fetch request from Postman or any other tool**. Check for message `[MSW] Mocking enabled` in the browser console to confirm that the API is working.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> In case of any queries feel free to contact us
